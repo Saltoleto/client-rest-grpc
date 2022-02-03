@@ -1,0 +1,34 @@
+@Library('me-beta') _
+me = initScript(this)
+me.properties()
+
+node {
+  me.node.pipeline(name: "alexa-api", idOpenApi: "611fc3b0fbb09d00510a88a4", env: [
+    qa: [
+      argoCD: [
+        [
+          gitUrl: "ssh://git@ssh.gitlab.miisy.me:29420/meweb/infra/argocd-meweb.git",
+          file: "./apps/alexa-api/values-version-trunk.yaml",
+          path: "image.version"
+        ]
+      ],
+      argoCDActions: [
+        [
+            server: "qa.argocd.us.az.miisy.me",
+            application: "meweb-qa-us-alexa-api-trunk",
+            kind: "Deployment",
+            resourceName: "meweb-qa-us-alexa-api-trunk-deployment"
+        ]
+      ]
+    ],
+    prod: [
+      argoCD: [
+          [
+            gitUrl: "ssh://git@ssh.gitlab.miisy.me:29420/meweb/infra/argocd-meweb.git",
+            file: "./apps/alexa-api/values-version.yaml",
+            path: "image.version"
+          ]
+      ]
+    ]
+  ])
+}

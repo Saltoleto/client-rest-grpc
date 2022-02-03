@@ -1,0 +1,33 @@
+{
+  "name": "hello-grpc-rest",
+  "version": "1.0.0",
+  "description": "Hello",
+  "main": "./src/index.js",
+  "author": "Fernando Saltoleto",
+  "license": "ISC",
+  "scripts": {
+    "start": "babel-node src/index.js",
+    "dev": "nodemon --exec babel-node src/index.js",
+    "docs": "node swagger.js",
+    "lint": "eslint --ext .js --ignore-path .gitignore --format json --output-file .target/test/eslint.json .",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@babel/node": "^7.14.5",
+    "@grpc/grpc-js": "^1.5.4",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.29.0",
+    "express": "^4.17.1",
+    "grpc-caller": "^0.14.0",
+    "jsonwebtoken": "^8.5.1"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.14.5",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^27.0.2",
+    "jest": "^27.0.4",
+    "jest-junit": "^12.2.0",
+    "nodemon": "^2.0.7",
+    "supertest": "^6.1.3"
+  }
+}
